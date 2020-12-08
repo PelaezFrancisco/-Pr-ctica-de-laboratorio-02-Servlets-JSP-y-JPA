@@ -5,6 +5,22 @@
 	<persistence-unit name="Practica2_FP_DT" transaction-type="RESOURCE_LOCAL">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<class>ec.edu.ups.entidad.Persona</class>
+		<class>ec.edu.ups.entidad.Ges_Empresas</class>
+		<class>ec.edu.ups.entidad.Ges_Productos</class>
+		<class>ec.edu.ups.entidad.Ges_Categorias</class>
+		<properties>
+
+<property name="eclipselink.ddl-generation" value="none"/>
+
+<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/Gestion_Compras"/>
+
+<property name="javax.persistence.jdbc.user" value="root"/>
+
+<property name="javax.persistence.jdbc.password" value="DFTUrptu9799"/>
+
+<property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+
+</properties>
 		
 		
 		

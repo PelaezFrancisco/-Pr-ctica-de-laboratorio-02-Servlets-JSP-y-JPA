@@ -24,6 +24,10 @@ public class Persona implements Serializable {
 	private String per_direccion;
 	private String per_email;
 	private String per_contrasena;
+	@ManyToOne
+	@JoinColumn(name = "emp_id", unique = true, nullable = false)
+	private Ges_Empresas empresas;
+	
 	private int emp_id;
 	
 

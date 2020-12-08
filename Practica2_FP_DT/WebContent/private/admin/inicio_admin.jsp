@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,13 +36,16 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
 
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="private/admin/CrearProducto.html?idP=${empresa.persona.get(0).id}&idE=${empresa.persona.get(0).empresaId}">Agregar Productos</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/ActualizarProducto?id=${empresa.persona.get(0).id}">Modificar Productos</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="private/admin/buscar_producto.html?id=${empresa.persona.get(0).id}">Buscar Productos</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/ListarProductoController?id=${empresa.persona.get(0).empresaId}">Listar Productos</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="private/admin/eliminar_producto.html?id=${empresa.persona.get(0).empresaId}">Eliminar Productos</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/ListaPedidosController?id=${empresa.persona.get(0).empresaId}">Listado Pedidos</a></li>
+				<c:forEach var="per" items="${empresa.personas}">
+					<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="private/admin/CrearProducto.html?idP=${per.per_id}&idE=${empresa.emp_id}">Agregar Productos</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/ActualizarProducto?id=${per.per_id}">Modificar Productos</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="private/admin/buscar_producto.html?id=${per.per_id}">Buscar Productos</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/ListarProductoController?id=${empresa.emp_id}">Listar Productos</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="private/admin/eliminar_producto.html?id=${empresa.emp_id}">Eliminar Productos</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/ListaPedidosController?id=${empresa.emp_id}">Listado Pedidos</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/CerrarSesionController">Cerrar Sesion</a></li>
+				</c:forEach>
+                    
                 </ul>
             </div>
         </div>
@@ -52,15 +56,19 @@
             <!-- Masthead Avatar Image-->
             <img class="masthead-avatar mb-5" src="../assets/img/avataaars.svg" alt="" />
             <!-- Masthead Heading-->
-            <h1 class="masthead-heading text-uppercase mb-0">Bienvenido ${empresa.persona.get(0).nombre}!</h1>
-            <!-- Icon Divider-->
-            <div class="divider-custom divider-light">
-                <div class="divider-custom-line"></div>
-                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                <div class="divider-custom-line"></div>
-            </div>
-            <!-- Masthead Subheading-->
-            <p class="masthead-subheading font-weight-light mb-0">Perfil de Administrador de: ${empresa.persona.get(0).empresaId}</p>
+            <c:forEach var="per" items="${empresa.personas}">
+	            <h1 class="masthead-heading text-uppercase mb-0">Bienvenido ${per.per_nombre}!</h1>
+	            <!-- Icon Divider-->
+	            <div class="divider-custom divider-light">
+	                <div class="divider-custom-line"></div>
+	                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+	                <div class="divider-custom-line"></div>
+	            </div>
+	            <!-- Masthead Subheading-->
+	           
+            </c:forEach>
+             <p class="masthead-subheading font-weight-light mb-0">Perfil de Administrador de: ${empresa.emp_nombre}</p>
+            
         </div>
     </header>
     
@@ -71,11 +79,17 @@
             <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Datos de Administrador</h2>
             <br>
             <!-- Icon Divider-->
-            <p style="text-align: center">Nombre: ${empresa.persona.get(0).nombre} ${empresa.persona.get(0).apellido}</p>
-            <p style="text-align: center"> Cedula: ${empresa.persona.get(0).cedula}</p>
-            <p style="text-align: center">Telefono: ${empresa.persona.get(0).telefono}</p>
-            <p style="text-align: center">Email: ${empresa.persona.get(0).email}</p>
             
+            <c:forEach var="per" items="${empresa.personas}">
+	             <p style="text-align: center">Nombre: ${per.per_nombre} ${per.per_apellido}</p>
+	            <p style="text-align: center"> Cedula: ${per.per_cedula}</p>
+	            <p style="text-align: center">Telefono: ${per.per_telefono}</p>
+	            <p style="text-align: center">Email: ${per.per_email}</p>
+            
+	           
+            </c:forEach>
+            
+           
             <div class="divider-custom">
                 <div class="divider-custom-line"></div>
                 <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
@@ -86,10 +100,10 @@
             <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Datos de la Empresa</h2>
             <!-- Icon Divider-->
             <br>
-            <p style="text-align: center">Nombre: ${empresa.empresaNombre}</p>
-            <p style="text-align: center"> Ruc: ${empresa.empresaRuc}</p>
-            <p style="text-align: center">Telefono: ${empresa.empresaTelefono}</p>
-            <p style="text-align: center">Email: ${empresa.empresaEmail}</p>
+            <p style="text-align: center">Nombre: ${empresa.emp_nombre}</p>
+            <p style="text-align: center"> Ruc: ${empresa.emp_ruc}</p>
+            <p style="text-align: center">Telefono: ${empresa.emp_telefono}</p>
+            <p style="text-align: center">Email: ${empresa.emp_email}</p>
             
             <div class="divider-custom">
                 <div class="divider-custom-line"></div>

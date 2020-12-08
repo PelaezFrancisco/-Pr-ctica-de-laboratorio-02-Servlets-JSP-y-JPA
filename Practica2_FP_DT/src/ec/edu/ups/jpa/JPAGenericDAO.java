@@ -1,9 +1,14 @@
 package ec.edu.ups.jpa;
 
 import java.util.List;
+import java.util.function.Predicate;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 import ec.edu.ups.dao.GenericDAO;
 
@@ -88,6 +93,31 @@ public class JPAGenericDAO<T, ID, EMAIL> implements GenericDAO<T, ID, EMAIL> {
 
 	@Override
 	public T find_email(EMAIL email) {
-		return em.find(persistentClass, email);
+		
+		//se crea el criterio de consulta
+		CriteriaBuilder criteriabuldier = em.getCriteriaBuilder();
+		CriteriaQuery<T> criteriaQuery = criteriabuldier.createQuery(this.persistentClass);
+		
+		//Se establece la clausula de from
+		Root<T> root = criteriaQuery.from(this.persistentClass);
+		
+		//Se establece la clusula de select
+		criteriaQuery.select(root);
+		
+		//Se configuran predicados
+		javax.persistence.criteria.Predicate predicate = criteriabuldier.like(root.get("per_email").as(String.class), email.toString());
+		
+		//javax.persistence.criteria.Predicate sig = criteriabuldier.like(root.get("per_email").as(String.class), email.toString());
+		
+		//predicate=criteriabuldier.
+		
+		//Se crea el where
+		criteriaQuery.where(predicate);
+		
+		//Se crea el resultado
+		TypedQuery<T> tq = em.createQuery(criteriaQuery);
+		
+		
+		return tq.getSingleResult();
 	}
 }

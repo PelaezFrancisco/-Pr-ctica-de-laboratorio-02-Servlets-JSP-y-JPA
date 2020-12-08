@@ -30,6 +30,8 @@ public class Ges_Empresas implements Serializable {
 	private String emp_email;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "empresa" )
 	private Set<Ges_Productos> productos = new HashSet<Ges_Productos>();
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "empresas")
+	private Set<Persona> personas = new HashSet<Persona>();
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "empresas")
 	private Set<Persona> persona = new HashSet<Persona>();
@@ -40,7 +42,7 @@ public class Ges_Empresas implements Serializable {
 		super();
 	}
 	public Ges_Empresas(int emp_id, String emp_nombre, String emp_ruc, String emp_direccion, String emp_telefono,
-			String emp_email, Set<Ges_Productos> productos) {
+			String emp_email, Set<Ges_Productos> productos, Set<Persona> personas) {
 		super();
 		this.emp_id = emp_id;
 		this.emp_nombre = emp_nombre;
@@ -49,10 +51,17 @@ public class Ges_Empresas implements Serializable {
 		this.emp_telefono = emp_telefono;
 		this.emp_email = emp_email;
 		this.productos = productos;
+		this.personas = personas;
 	}
 
 
 
+	public Set<Persona> getPersonas() {
+		return personas;
+	}
+	public void setPersonas(Set<Persona> personas) {
+		this.personas = personas;
+	}
 	public Set<Ges_Productos> getProductos() {
 		return productos;
 	}

@@ -79,7 +79,6 @@ public class CrearPedido extends HttpServlet {
 			}
 		}
 		
-		//System.out.println("Lista de prudctos de empresa de compra= "+listaproductos.size());
 		for (int i = 0; i < prolist.size(); i++) {
 			try {
 				//Recibimos la cantida de compra(cant) del producto (i)

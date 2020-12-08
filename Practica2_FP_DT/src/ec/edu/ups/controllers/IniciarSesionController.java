@@ -67,11 +67,6 @@ public class IniciarSesionController extends HttpServlet {
 				System.out.println("Problema Resolviendo el Rol");
 			}
 			
-			
-			//request.setAttribute("persona", persona);
-			
-			
-			
 			//If para control de contrasena
 			System.out.println("Contrasena puesta= "+contrasena);
 			System.out.println("Contrasena de base= "+persona.getPer_contrasena());

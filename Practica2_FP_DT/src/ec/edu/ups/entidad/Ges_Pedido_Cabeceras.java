@@ -21,8 +21,7 @@ public class Ges_Pedido_Cabeceras implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int ped_numeroP;
-	@Temporal(TemporalType.DATE)
-	private java.util.Date ped_fecha;
+	private String ped_fecha;
 	private Double ped_subtotal;
 	private Double ped_iva;
 	private Double ped_descuento;
@@ -48,12 +47,12 @@ public class Ges_Pedido_Cabeceras implements Serializable {
 		this.ped_numeroP = ped_numeroP;
 	}
 
-	public java.util.Date getPed_fecha() {
+	public String getPed_fecha() {
 		return ped_fecha;
 	}
 
-	public void setPed_fecha(java.util.Date ped_fecha) {
-		this.ped_fecha = ped_fecha;
+	public void setPed_fecha(String mysqlDateString) {
+		this.ped_fecha = mysqlDateString;
 	}
 
 	public Set<Ges_Pedido_Detalles> getPedidoDet() {

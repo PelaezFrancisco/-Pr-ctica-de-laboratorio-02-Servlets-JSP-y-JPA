@@ -6,6 +6,7 @@ import ec.edu.ups.dao.CategoriaDAO;
 import ec.edu.ups.dao.DAOFactory;
 import ec.edu.ups.dao.EmpresaDAO;
 import ec.edu.ups.dao.PedidoCabeceraDAO;
+import ec.edu.ups.dao.PedidoDetalleDAO;
 
 public class JPADAOFactory extends DAOFactory {
 
@@ -35,6 +36,12 @@ public class JPADAOFactory extends DAOFactory {
 	public PedidoCabeceraDAO gePedidoCabeceraDAO() {
 		// TODO Auto-generated method stub
 		return new JPADAOPedidoCabecera();
+	}
+
+	@Override
+	public PedidoDetalleDAO getPedidoDetalleDAO() {
+		// TODO Auto-generated method stub
+		return new JPADAOPedidoDetalle();
 	}
 
 }

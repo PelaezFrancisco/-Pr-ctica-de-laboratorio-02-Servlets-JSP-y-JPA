@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import ec.edu.ups.dao.DAOFactory;
 import ec.edu.ups.dao.ProductoDAO;
-import ec.edu.ups.modelo.Producto;
+import ec.edu.ups.entidad.Ges_Productos;
 
 /**
  * Servlet implementation class CompraController
@@ -21,7 +21,7 @@ import ec.edu.ups.modelo.Producto;
 public class CompraController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ProductoDAO productoDao;
-	private ArrayList<Producto>listaProducto = new ArrayList<Producto>();
+	private List<Ges_Productos> listaProducto = new ArrayList<Ges_Productos>();
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -40,8 +40,14 @@ public class CompraController extends HttpServlet {
 		//System.out.println("parametro recibido en CompraController= "+id);
 		try {
 			//System.out.println("El id que manda a PorEmpPer"+id);
-			listaProducto = (ArrayList<Producto>) productoDao.ProEmpPer(id);
-			//System.out.println("Tamaño de la Lista Productos: " + listaProducto.size());
+			listaProducto = productoDao.findAll();
+			
+			ArrayList<Ges_Productos> prolist = new ArrayList();
+			for (int i = 0; i < listaProducto.size(); i++) {
+				if (listaProducto.get(i).getEmpresa().getEmp_id()==id) {
+					prolist.add(listaProducto.get(i));
+				}
+			}
 			request.setAttribute("productos", listaProducto);
 			url = "/private/user/compras.jsp";
 		} catch (Exception e) {

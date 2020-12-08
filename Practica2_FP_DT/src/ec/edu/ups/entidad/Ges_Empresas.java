@@ -8,6 +8,8 @@ import javax.persistence.*;
 
 
 
+
+
 /**
  * Entity implementation class for Entity: Ges_Empresas
  *
@@ -29,6 +31,11 @@ public class Ges_Empresas implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "empresa" )
 	private Set<Ges_Productos> productos = new HashSet<Ges_Productos>();
 
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "empresas")
+	private Set<Persona> persona = new HashSet<Persona>();
+	
+	
+	
 	public Ges_Empresas() {
 		super();
 	}

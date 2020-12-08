@@ -1,6 +1,9 @@
 package ec.edu.ups.entidad;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.*;
 
 import ec.edu.ups.entidad.*;
@@ -28,9 +31,13 @@ public class Ges_Productos implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "cat_id", unique = true, nullable = false)
 	private Ges_Categorias categoria;
+	
 	@ManyToOne
 	@JoinColumn(name = "emp_id", unique = true, nullable = false)
 	private Ges_Empresas empresa;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "product" )
+	private Set<Ges_Pedido_Detalles> pedidoD = new HashSet<Ges_Pedido_Detalles>();
 
 	public Ges_Productos() {
 		super();

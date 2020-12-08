@@ -8,6 +8,8 @@
 		<class>ec.edu.ups.entidad.Ges_Empresas</class>
 		<class>ec.edu.ups.entidad.Ges_Productos</class>
 		<class>ec.edu.ups.entidad.Ges_Categorias</class>
+		<class>ec.edu.ups.entidad.Ges_Pedido_Cabeceras</class>
+		<class>ec.edu.ups.entidad.Ges_Pedido_Detalles</class>
 		<properties>
 
 <property name="eclipselink.ddl-generation" value="none"/>

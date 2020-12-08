@@ -17,4 +17,8 @@ public abstract class DAOFactory {
 	public abstract ProductoDAO getProductoDAO() ;
 
 	public abstract CategoriaDAO getCategoriaDAO();	
+	
+	public abstract PedidoCabeceraDAO gePedidoCabeceraDAO();
+
+	
 }

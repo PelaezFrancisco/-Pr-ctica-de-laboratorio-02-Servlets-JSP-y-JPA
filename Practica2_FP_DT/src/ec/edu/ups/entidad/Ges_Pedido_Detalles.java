@@ -35,5 +35,6 @@ public class Ges_Pedido_Detalles implements Serializable {
 	public Ges_Pedido_Detalles() {
 		super();
 	}
+	
    
 }

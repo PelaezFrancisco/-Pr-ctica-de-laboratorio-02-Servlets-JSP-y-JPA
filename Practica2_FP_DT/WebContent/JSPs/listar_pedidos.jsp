@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ListarProductos</title>
+    <title>ListarPedidos</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/" />
     <!-- Font Awesome icons (free version)-->
@@ -27,7 +27,7 @@
             <!-- Masthead Avatar Image-->
             <img class="masthead-avatar mb-5" src="assets/img/portfolio/lista.png" alt="" />
             <!-- Masthead Heading-->
-            <h1 class="masthead-heading text-uppercase mb-0">Listar Productos</h1>
+            <h1 class="masthead-heading text-uppercase mb-0">Listar Pedidos</h1>
             <!-- Icon Divider-->
             <!-- Masthead Subheading-->
             <p class="masthead-subheading font-weight-light mb-0">Perfil de Administrador de ${empresa.empresaNombre}</p>
@@ -71,24 +71,26 @@
 	<table>
 		<tr>
 			<td><strong>Codigo</strong></td>
-			<td><strong>Nombre</strong></td>
-			<td><strong>Descripcion</strong></td>
-			<td><strong>Stock</strong></td>
-			<td><strong>Precio</strong></td>
-			<td><strong>Imagen</strong></td>
+			<td><strong>Fecha</strong></td>
+			<td><strong>Subtotal</strong></td>
+			<td><strong>Iva</strong></td>
+			<td><strong>Descuento</strong></td>
+			<td><strong>Total</strong></td>
+			<td><strong>Estado</strong></td>
 		</tr>
-		<c:forEach var="pro" items="${lista}">
+		<c:forEach var="p" items="${lista}">
 			<tr>
-				<td>${pro.pro_id}</td>				
-				<td>${pro.pro_nombre}</td>
-				<td>${pro.pro_descripcion}</td>
-				<td>${pro.pro_stock}</td>
-				<td>${pro.pro_precioV}</td>
-				<td>${pro.pro_imagen}</td>
+				<td>${p.ped_numeroP}</td>				
+				<td>${p.ped_fecha}</td>
+				<td>${p.ped_subtotal}</td>
+				<td>${p.ped_iva}</td>
+				<td>${p.ped_descuento}</td>
+				<td>${p.ped_total}</td>
+				<td>${p.ped_estado}</td>
 			</tr>
 		</c:forEach>
 	</table>
-	<a href="/EjemploPersonaWebJPA/index.html">Regresar al index</a>
+	<a href="/Practica2_FP_DT/index.html">Regresar al index</a>
 </div>
 	</section>
 </body>

@@ -1,27 +1,20 @@
-*,
-*:before,
-*:after {
-    box-sizing: border-box;
-}
-
-html {
-    overflow-y: scroll;
+header {
+    background-color: #1ab188;
+    text-align: center;
+    margin: 0px;
+    padding: 0%;
 }
 
 body {
-    background: black;
+    background: rgba(215, 219, 221, 0.85);
     font-family: "Titillium Web", sans-serif;
 }
 
-a {
-    text-decoration: none;
-    color: #1ab188;
-    -webkit-transition: 0.5s ease;
-    transition: 0.5s ease;
-} 
-
-a:hover {
-    color: #179b77;
+.seccion {
+    width: 100%;
+    text-align: center;
+    position: relative;
+    float: left;
 }
 
 .form {
@@ -30,48 +23,7 @@ a:hover {
     max-width: 600px;
     margin: 40px auto;
     border-radius: 4px;
-    box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
-}
-
-.tab-group {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 40px 0;
-}
-
-.tab-group:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-.tab-group li a {
-    display: block;
-    text-decoration: none;
-    padding: 15px;
-    background: rgba(160, 179, 176, 0.25);
-    color: #a0b3b0;
-    font-size: 20px;
-    float: left;
-    width: 50%;
-    text-align: center;
-    cursor: pointer;
-    -webkit-transition: 0.5s ease;
-    transition: 0.5s ease;
-}
-
-.tab-group li a:hover {
-    background: #179b77;
-    color: #ffffff;
-}
-
-.tab-group .active a {
-    background: #1ab188;
-    color: #ffffff;
-}
-
-.tab-content>div:last-child {
-    display: none;
+    box-shadow: 0 4px 10px 4px rgba(191, 201, 202, 0.3);
 }
 
 h1 {
@@ -85,8 +37,7 @@ label {
     position: absolute;
     -webkit-transform: translateY(6px);
     transform: translateY(6px);
-    left: 13px;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(41, 173, 156, 0.973);
     -webkit-transition: all 0.25s ease;
     transition: all 0.25s ease;
     -webkit-backface-visibility: hidden;
@@ -191,4 +142,61 @@ textarea {
 .forgot {
     margin-top: -20px;
     text-align: right;
+}
+
+@media screen and (max-width: 100%) {
+    table {
+        width: 500px;
+    }
+    thead {
+        display: none;
+    }
+    tr:nth-of-type(2n) {
+        background-color: inherit;
+    }
+    tr td:first-child {
+        background: #f0f0f0;
+        font-weight: bold;
+        font-size: 1.3em;
+    }
+    tbody td {
+        display: block;
+        text-align: center;
+    }
+    tbody td:before {
+        content: attr(data-th);
+        display: block;
+        text-align: center;
+    }
+}
+
+table {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    text-align: center;
+    width: 100%;
+}
+
+tr {
+    background-repeat: repeat-x;
+    color: #000000;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-right-color: #558FA6;
+    border-bottom-color: #58967c;
+    font-family: “Trebuchet MS”, Arial;
+    text-transform: uppercase;
+}
+
+#formulario01 {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+}
+
+p {
+    height: 10px;
 }

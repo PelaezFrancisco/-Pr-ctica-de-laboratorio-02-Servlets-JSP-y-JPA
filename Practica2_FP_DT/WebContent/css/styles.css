@@ -84,6 +84,52 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 0.5rem;
 }
 
+/*
+CUSTOM CODE
+*/
+
+.titulo_empresa{
+	font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	font-size: 45px;
+	position: absolute;
+	top: 770px;
+	left: 37%;
+	text-align: center;
+}
+
+.select_empresa{
+	position: absolute;
+	top: 850px;
+	width: 35%;
+	height: 50px;
+	left: 32%;
+}
+
+.opcion_empresa{
+	position: relative;
+	text-align: center;
+}
+
+.nombre_empresa{
+	font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	font-size: 45px;
+	position: relative;
+	top: -30px;
+	text-align: center;
+}
+
+.titulo_productos{
+	font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	font-size: 45px;
+	position: relative;
+	top: 0px;
+	text-align: center;
+}
+
+/*
+END CUSTOM CODE
+*/
+
 p {
   margin-top: 0;
   margin-bottom: 1rem;

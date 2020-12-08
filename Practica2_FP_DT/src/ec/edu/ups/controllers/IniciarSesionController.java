@@ -11,19 +11,32 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import ec.edu.ups.dao.DAOFactory;
+import ec.edu.ups.dao.EmpresaDAO;
+import ec.edu.ups.dao.PersonaDAO;
+import ec.edu.ups.entidad.Ges_Empresas;
+import ec.edu.ups.entidad.Persona;
+
+
 /**
  * Servlet implementation class IniciarSesionController
  */
 @WebServlet("/IniciarSesionController")
 public class IniciarSesionController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private EmpresaDAO empresaDAO;
+	private PersonaDAO personaDAO;
+	private Ges_Empresas empresa;
+	private Persona persona;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
     public IniciarSesionController() {
-        super();
-        // TODO Auto-generated constructor stub
+        empresaDAO = DAOFactory.getFactory().getEmpresaDAO();
+        personaDAO = DAOFactory.getFactory().getPersonaDAO();
+        empresa = new Ges_Empresas();
+        persona = new Persona();
     }
 
 	/**
@@ -35,17 +48,17 @@ public class IniciarSesionController extends HttpServlet {
 		String url = null;
 		char rol = 'Z';
 		String email=null;
-		//try {
-			//email = request.getParameter("email");
+		try {
+			email = request.getParameter("email");
 			//MD5 para contrasena
-			//String contrasena = getMd5(request.getParameter("contra"));
-			/*
-			persona = personaDao.find_email(email);
+			String contrasena = getMd5(request.getParameter("contra"));
+			
+			persona = personaDAO.find_email(email);
 			System.out.println("Email recibido = "+email);
-			System.out.println("Email de Base = "+persona.getEmail());
+			System.out.println("Email de Base = "+persona.getPer_email());
 			
 			try {
-				rol = persona.getRol();
+				rol = persona.getPer_rol();
 				System.out.println("Rol de Persona = "+ rol );
 			} catch (Exception e) {
 				// TODO: handle exception
@@ -60,8 +73,8 @@ public class IniciarSesionController extends HttpServlet {
 			
 			//If para control de contrasena
 			System.out.println("Contrasena puesta= "+contrasena);
-			System.out.println("Contrasena de base= "+persona.getContrasena());
-			if (contrasena.equals(persona.getContrasena())) {
+			System.out.println("Contrasena de base= "+persona.getPer_contrasena());
+			if (contrasena.equals(persona.getPer_contrasena())) {
 				
 				//If para redireccion de rol
 				if (rol=='A') {
@@ -75,7 +88,7 @@ public class IniciarSesionController extends HttpServlet {
 				url = "/public/IniciarSesion.html";
 			}
 			
-			empresa = empresaDao.read(persona.getId());
+			empresa = empresaDAO.read(persona.getPer_id());
 			request.setAttribute("empresa", empresa);
 			
 		} catch (Exception e) {
@@ -85,8 +98,8 @@ public class IniciarSesionController extends HttpServlet {
 		}
 		
 		getServletContext().getRequestDispatcher(url).forward(request, response);
-		*/
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**

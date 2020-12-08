@@ -33,7 +33,7 @@ public class Ges_Empresas implements Serializable {
 		super();
 	}
 	public Ges_Empresas(int emp_id, String emp_nombre, String emp_ruc, String emp_direccion, String emp_telefono,
-			String emp_email) {
+			String emp_email, Set<Ges_Productos> productos) {
 		super();
 		this.emp_id = emp_id;
 		this.emp_nombre = emp_nombre;
@@ -41,10 +41,17 @@ public class Ges_Empresas implements Serializable {
 		this.emp_direccion = emp_direccion;
 		this.emp_telefono = emp_telefono;
 		this.emp_email = emp_email;
+		this.productos = productos;
 	}
 
 
 
+	public Set<Ges_Productos> getProductos() {
+		return productos;
+	}
+	public void setProductos(Set<Ges_Productos> productos) {
+		this.productos = productos;
+	}
 	public int getEmp_id() {
 		return emp_id;
 	}
@@ -108,8 +115,6 @@ public class Ges_Empresas implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -122,8 +127,6 @@ public class Ges_Empresas implements Serializable {
 		result = prime * result + ((emp_telefono == null) ? 0 : emp_telefono.hashCode());
 		return result;
 	}
-
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -162,5 +165,8 @@ public class Ges_Empresas implements Serializable {
 			return false;
 		return true;
 	}
-   
+
+	
+
+	
 }

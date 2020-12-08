@@ -2,7 +2,7 @@ package ec.edu.ups.dao;
 
 import java.util.List;
 
-public interface GenericDAO<T, ID> {
+public interface GenericDAO<T, ID, EMAIL> {
 
     public void create(T entity);
 
@@ -15,5 +15,7 @@ public interface GenericDAO<T, ID> {
     public void deleteByID(ID id);
     
     public List<T> findAll();
+    
+    public T find_email(EMAIL email);
 }
 

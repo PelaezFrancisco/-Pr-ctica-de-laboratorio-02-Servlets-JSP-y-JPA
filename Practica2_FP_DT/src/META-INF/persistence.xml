@@ -12,11 +12,15 @@
 
 <property name="eclipselink.ddl-generation" value="none"/>
 
-<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/Gestion_Compras"/>
+<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/Gestion_Compras?serverTimezone=UTC"/>
 
 <property name="javax.persistence.jdbc.user" value="root"/>
 
+<property name="javax.persistence.jdbc.password" value="Patito.123@456"/>
+<!-- 
 <property name="javax.persistence.jdbc.password" value="DFTUrptu9799"/>
+ -->
+
 
 <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
 

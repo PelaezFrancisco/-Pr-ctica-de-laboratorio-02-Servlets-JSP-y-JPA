@@ -1,30 +1,32 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registar Productos</title>
+    <title>ModificarProductos</title>
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="../assets/img/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico" />
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="../css/styles.css" rel="stylesheet" />
-    <link href="../css/Agregar.css" rel="stylesheet" type="text/css" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <link href="css/listar.css" rel="stylesheet" type="text/css" /> 
+
 </head>
 
 <body>
-    
     <header class="masthead bg-primary text-white text-center">
         <div class="container d-flex align-items-center flex-column">
             <!-- Masthead Avatar Image-->
-            <img class="masthead-avatar mb-5" src="../../assets/img/portfolio/p.png" alt="" />
+            <img class="masthead-avatar mb-5" src="assets/img/portfolio/update.png" alt="" />
             <!-- Masthead Heading-->
-            <h1 class="masthead-heading text-uppercase mb-0">Agregar Productos</h1>
+            <h1 class="masthead-heading text-uppercase mb-0">Modificar Productos</h1>
             <!-- Icon Divider-->
         </div>
     </header>
@@ -38,26 +40,60 @@
 
                 <ul class="navbar-nav ml-auto">
 
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/IniciarSesionController">Pagina Principal</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="CrearProducto.html">Agregar Productos</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/inicio_admin.jsp">Pagina Principal</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/private/admin/CrearProducto.html">Agregar Productos</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/ActualizarProducto">Modificar Productos</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="buscar_producto.html">Buscar Productos</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/private/admin/buscar_producto.html">Buscar Productos</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/ListarProductoController">Listar Productos</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="eliminar_producto.html">Eliminar Productos</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/private/admin/eliminar_producto.html">Eliminar Productos</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/ListaPedidosController">Listado Pedidos</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/public/IniciarSesion.html">Cerrar Sesion</a></li>
                 </ul>
             </div>
         </div>
     </nav>
+    <!-- Portfolio Section-->
+    <section class="page-section portfolio" id="portfolio">
+        <div class="container">
+            <!-- Portfolio Section Heading-->
+      
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Lista de Productos a Modificar</h2>
+            <!-- Icon Divider-->
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+    <c:set var="lista" scope="request" value="${productos}" />
 
+	<table>
+		<tr>
+			<td><strong>Codigo</strong></td>
+			<td><strong>Nombre</strong></td>
+			<td><strong>Descripcion</strong></td>
+			<td><strong>Stock</strong></td>
+			<td><strong>Precio</strong></td>
+			<td><strong>Imagen</strong></td>
+		</tr>
+		<c:forEach var="pro" items="${lista}">
+			<tr>
+				<td>${pro.pro_id}</td>				
+				<td>${pro.pro_nombre}</td>
+				<td>${pro.pro_descripcion}</td>
+				<td>${pro.pro_stock}</td>
+				<td>${pro.pro_precioV}</td>
+				<td>${pro.pro_imagen}</td>
+			</tr>
+		</c:forEach>
+	</table>
+	</section>
     <section>
         <div class="form">
             <div class="datos">
-	<form id="formulario01" action="/Practica2_FP_DT/CrearProductosController" method="post">
-		<!-- <label>Codigo del Producto</label><br><br>
+                <form id="formulario01" method="POST" action="/Practica2_FP_DT/ModificarProductosController">
+                    <label>Codigo del Producto a Modificar</label><br><br>
                     <input type="text" id="id" name="id" value="" placeholder="Ingrese el Codigo ..." />
-                    <br><br> -->
+                    <br><br>
                     <label>Nombre del Producto</label><br><br>
                     <input type="text" id="nombre" name="nombre" value="" placeholder="Ingrese el Nombre ..." />
                     <br><br>
@@ -103,20 +139,13 @@
                     <input type="text" name="imagen" id="imagen"/>
                     
                     <br><br><br>
-                    <!--  
-                    <label>Categoria del Producto</label><br><br>
-                    <input type="text" id="categ" name="categ" value="" placeholder="Precio Venta Publico ..." />
-                    <br><br>
-                    <label>empresa del Producto</label><br><br>
-                    <input type="text" id="emp" name="emp" value="" placeholder="Precio Venta Publico ..." />
-                    <br><br>-->
-                    <input type="submit" id="login" name="login" value="Agregar" />
+              
+                    <input type="submit" id="login" name="login" value="Modificar" />
                     <input type="reset" value="Cancelar" />
-				</form>
-	
+                </form>
             </div>
         </div>
     </section>
-	
+
 </body>
 </html>

@@ -28,41 +28,12 @@ public class Persona implements Serializable {
 	@JoinColumn(name = "emp_id", unique = true, nullable = false)
 	private Ges_Empresas empresas;
 	
-	private int emp_id;
 	
-
-	public Persona() {
-		super();
-		
-	}
-	
-	public Persona(int per_id, String per_cedula, String per_nombre, String per_apellido, char per_rol, String per_telefono,
-			String per_direccion, String per_email, String per_contrasena, int emp_id) {
-		this.per_id=per_id;
-		this.per_cedula= per_cedula;
-		this.per_nombre = per_nombre;
-		this.per_apellido = per_apellido;
-		this.per_rol = per_rol;
-		this.per_telefono = per_telefono;
-		this.per_direccion = per_direccion;
-		this.per_email = per_email;
-		this.per_contrasena = per_contrasena;
-		this.emp_id = emp_id;
-	}
-	
-	@Override
-	public String toString() {
-		return "Persona [per_id=" + per_id + ", per_cedula=" + per_cedula + ", per_nombre=" + per_nombre
-				+ ", per_apellido=" + per_apellido + ", per_rol=" + per_rol + ", per_telefono=" + per_telefono
-				+ ", per_direccion=" + per_direccion + ", per_email=" + per_email + ", per_contrasena=" + per_contrasena
-				+ ", emp_id=" + emp_id + "]";
-	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + emp_id;
 		result = prime * result + ((per_apellido == null) ? 0 : per_apellido.hashCode());
 		result = prime * result + ((per_cedula == null) ? 0 : per_cedula.hashCode());
 		result = prime * result + ((per_contrasena == null) ? 0 : per_contrasena.hashCode());
@@ -84,8 +55,6 @@ public class Persona implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Persona other = (Persona) obj;
-		if (emp_id != other.emp_id)
-			return false;
 		if (per_apellido == null) {
 			if (other.per_apellido != null)
 				return false;
@@ -127,6 +96,35 @@ public class Persona implements Serializable {
 			return false;
 		return true;
 	}
+
+	public Ges_Empresas getEmpresa() {
+		return empresas;
+	}
+
+	public void setEmpresa(Ges_Empresas empresas) {
+		this.empresas = empresas;
+	}
+
+	public Persona() {
+		super();
+		
+	}
+	
+	public Persona(int per_id, String per_cedula, String per_nombre, String per_apellido, char per_rol, String per_telefono,
+			String per_direccion, String per_email, String per_contrasena, Ges_Empresas empresa) {
+		this.per_id=per_id;
+		this.per_cedula= per_cedula;
+		this.per_nombre = per_nombre;
+		this.per_apellido = per_apellido;
+		this.per_rol = per_rol;
+		this.per_telefono = per_telefono;
+		this.per_direccion = per_direccion;
+		this.per_email = per_email;
+		this.per_contrasena = per_contrasena;
+		this.empresas = empresas;
+	}
+	
+	
 
 	public int getPer_id() {
 		return per_id;
@@ -198,14 +196,6 @@ public class Persona implements Serializable {
 
 	public void setPer_contrasena(String per_contrasena) {
 		this.per_contrasena = per_contrasena;
-	}
-
-	public int getEmp_id() {
-		return emp_id;
-	}
-
-	public void setEmp_id(int emp_id) {
-		this.emp_id = emp_id;
 	}
 
 

@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import ec.edu.ups.dao.DAOFactory;
 import ec.edu.ups.dao.EmpresaDAO;
@@ -76,6 +77,11 @@ public class IniciarSesionController extends HttpServlet {
 			System.out.println("Contrasena de base= "+persona.getPer_contrasena());
 			if (contrasena.equals(persona.getPer_contrasena())) {
 				
+				//Carga los datos del usuario dentro del HttpSession
+				HttpSession  session=request.getSession(true);
+		        session.setAttribute("mail", email);
+		        session.setAttribute("password", persona.getPer_contrasena());
+				
 				//If para redireccion de rol
 				if (rol=='A') {
 					System.out.println("Se manda a Admin");
@@ -97,9 +103,10 @@ public class IniciarSesionController extends HttpServlet {
 			url = "/JSPs/error.jsp";
 		}
 		
+		//System.out.println("Nombre del persona"+persona.getPer_nombre());
 		getServletContext().getRequestDispatcher(url).forward(request, response);
 		
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**

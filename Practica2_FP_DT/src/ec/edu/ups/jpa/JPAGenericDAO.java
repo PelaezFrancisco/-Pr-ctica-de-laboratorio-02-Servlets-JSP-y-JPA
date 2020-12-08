@@ -7,7 +7,7 @@ import javax.persistence.Persistence;
 
 import ec.edu.ups.dao.GenericDAO;
 
-public class JPAGenericDAO<T, ID> implements GenericDAO<T, ID> {
+public class JPAGenericDAO<T, ID, EMAIL> implements GenericDAO<T, ID, EMAIL> {
     private Class<T> persistentClass;
     protected EntityManager em;
 
@@ -85,4 +85,10 @@ public class JPAGenericDAO<T, ID> implements GenericDAO<T, ID> {
 	return lista;
 
     }
+
+	@Override
+	public T find_email(EMAIL email) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

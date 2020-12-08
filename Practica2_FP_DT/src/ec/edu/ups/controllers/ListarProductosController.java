@@ -1,6 +1,7 @@
 package ec.edu.ups.controllers;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -32,6 +33,9 @@ public class ListarProductosController extends HttpServlet {
      */
     public ListarProductosController() {
         productoDao = DAOFactory.getFactory().getProductoDAO();
+        
+        
+        
     }
 
 	/**
@@ -40,11 +44,23 @@ public class ListarProductosController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		String url= null;
+		int idEmp=0;
+		ArrayList<Ges_Productos> prolist = new ArrayList<Ges_Productos>();
 		try {
-			listaProductos= productoDao.findAll();
-			System.out.println("Tamano d ela lista :" +listaProductos.size());
-			request.setAttribute("productos", listaProductos);
-			url = "/JSPs/listar_productos.jsp";
+        //Id de empresa
+        idEmp=Integer.parseInt(request.getParameter("idE"));
+        System.out.println("ID de la Empresa "+ idEmp);
+        //Traemos lista de productos de la empresa
+        listaProductos = productoDao.findAll();
+
+        for (int i = 0; i < listaProductos.size(); i++) {
+            if (listaProductos.get(i).getEmpresa().getEmp_id()==idEmp) {
+            	System.out.println("Lista Productos "+ i);
+                prolist.add(listaProductos.get(i));
+            }
+        }
+			request.setAttribute("productos", prolist);
+			url = "/private/admin/listar_productos.jsp";
 		} catch (Exception e) {
 			  url = "/JSPs/error.jsp";
 		}

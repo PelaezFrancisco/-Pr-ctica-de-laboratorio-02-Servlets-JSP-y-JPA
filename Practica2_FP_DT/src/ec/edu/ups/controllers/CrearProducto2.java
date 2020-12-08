@@ -1,6 +1,8 @@
 package ec.edu.ups.controllers;
 
 import java.io.IOException;
+
+import javax.persistence.metamodel.SetAttribute;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,45 +14,44 @@ import ec.edu.ups.dao.EmpresaDAO;
 import ec.edu.ups.dao.ProductoDAO;
 import ec.edu.ups.entidad.Ges_Empresas;
 import ec.edu.ups.entidad.Ges_Productos;
-import ec.edu.ups.entidad.Persona;
 
 /**
- * Servlet implementation class EliminarProductoController2
+ * Servlet implementation class CrearProducto2
  */
-@WebServlet("/EliminarProductoController2")
-public class EliminarProductoController2 extends HttpServlet {
+@WebServlet("/CrearProducto2")
+public class CrearProducto2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private ProductoDAO productoDao;
-	private EmpresaDAO empresaDAO;
-	private Ges_Productos productos;
+	private EmpresaDAO empresaDao;
 	private Ges_Empresas empresas;
-	
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EliminarProductoController2() {
-        productoDao= DAOFactory.getFactory().getProductoDAO();
-        empresaDAO = DAOFactory.getFactory().getEmpresaDAO();
-        productos= new Ges_Productos();
+    public CrearProducto2() {
+        empresaDao= DAOFactory.getFactory().getEmpresaDAO();
         empresas = new Ges_Empresas();
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = null;
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		int idE=0;
+		String url=null;
 		try {
+			idE= Integer.valueOf(request.getParameter("idE"));
+			empresas= empresaDao.read(idE);
+			request.setAttribute("empresa", empresas);
+			url = "/private/admin/AgregarProducto.jsp";
 			
-		   productos = productoDao.read(Integer.valueOf(request.getParameter("idPro")));
-		    productoDao.delete(productos);
-		    url = "/index.html";
 		} catch (Exception e) {
-		    url = "/JSPs/error.jsp";
+			System.out.println("ERROR DE INICIO DE SESION");
+			e.printStackTrace();
+			url = "/JSPs/error.jsp";
 		}
 		getServletContext().getRequestDispatcher(url).forward(request, response);
-	    }
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

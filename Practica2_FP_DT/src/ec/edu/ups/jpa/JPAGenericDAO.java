@@ -120,4 +120,5 @@ public class JPAGenericDAO<T, ID, EMAIL> implements GenericDAO<T, ID, EMAIL> {
 		
 		return tq.getSingleResult();
 	}
+	 
 }

@@ -58,7 +58,7 @@
         <div class="container">
             <!-- Portfolio Section Heading-->
       
-            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Lista de Productos a Modificar</h2>
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Eliminar Productos</h2>
             <!-- Icon Divider-->
             <div class="divider-custom">
                 <div class="divider-custom-line"></div>
@@ -66,7 +66,6 @@
                 <div class="divider-custom-line"></div>
             </div>
 	<c:set var="lista" scope="request" value="${productos}" />
-	<h1>Lista de Productos</h1>
 
 	<table>
 		<tr>

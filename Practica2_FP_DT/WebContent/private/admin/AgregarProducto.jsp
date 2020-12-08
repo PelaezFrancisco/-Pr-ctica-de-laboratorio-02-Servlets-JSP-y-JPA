@@ -17,6 +17,7 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
     <link href="css/listar.css" rel="stylesheet" type="text/css" /> 
+    <link rel="stylesheet" type="text/css" href="css/Agregar.css" />
 
 </head>
 
@@ -54,7 +55,7 @@
     </nav>
         <div class="form">
             <div class="datos">
-                <form id="formulario01" method="GET" action="/Practica1_DT_FP/CrearProductoController">
+                <form id="formulario01" method="GET" action="/Practica2_FP_DT/CrearProductosController">
                     <label>Nombre del Producto</label><br><br>
                     <input type="text" id="nombre" name="nombre" value="" placeholder="Ingrese el Nombre ..." />
                     <br><br>
@@ -91,14 +92,23 @@
                         <option value="8">TVentas</option>
                         <option value="9">Jugueton</option>
                     </datalist><br><br>
-                    <!--  
-                    <label>Categoria del Producto</label><br><br>
-                    <input type="text" id="categ" name="categ" value="" placeholder="Precio Venta Publico ..." />
+                    <br>
+                    <label>Seleccione la Imagen:</label><br><br>
+                    
+                    <!--
+                     <input type="file" name="imagen">
+                    -->
+                    <input type="text" name="imagen" id="imagen"/>
+                    
+                    <br><br><br>
+                      
+                    <input id="empId" name="empId" type="hidden" value="${empresa.emp_id}">
+                    <!--<input type="text" id="categ" name="categ" value="" placeholder="Precio Venta Publico ..." />
                     <br><br>
                     <label>empresa del Producto</label><br><br>
                     <input type="text" id="emp" name="emp" value="" placeholder="Precio Venta Publico ..." />
                     <br><br>-->
-                    <input type="submit" id="login" name="login" value="Actualizar" />
+                    <input type="submit" id="login" name="login" value="Agregar" />
                     <input type="reset" value="Cancelar" />
                 </form>
             </div>

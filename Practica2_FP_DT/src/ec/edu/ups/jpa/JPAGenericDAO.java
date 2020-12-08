@@ -88,7 +88,6 @@ public class JPAGenericDAO<T, ID, EMAIL> implements GenericDAO<T, ID, EMAIL> {
 
 	@Override
 	public T find_email(EMAIL email) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.find(persistentClass, email);
 	}
 }

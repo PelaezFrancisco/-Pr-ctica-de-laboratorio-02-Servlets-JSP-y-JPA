@@ -86,7 +86,7 @@
                 <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                 <div class="divider-custom-line"></div>
             </div>
-            <h3 class="nombre_empresa">Empresa: ${obj_empresa.empresaNombre}</h3>
+            <h3 class="nombre_empresa">Empresa: ${obj_empresa.emp_nombre}</h3>
             <!-- Icon Divider-->
            <!-- Icon Divider-->
             <div class="divider-custom" style="margin-bottom: -40px">
@@ -103,7 +103,7 @@
             
              -->
             <div class="row justify-content-center">
-			<c:set var="list_productos" scope="request" value="${empresa.producto}" />
+			<c:set var="list_productos" scope="request" value="${empresa.productos}" />
 			<script type="text/javascript">
 			function redirectSignIn(){
 				console.log("Entro a redirreccion");
@@ -117,9 +117,9 @@
 	                <div class="col-md-6 col-lg-4 mb-5" onclick="redirectSignIn()">
 	                    <div class="portfolio-item mx-auto" data-toggle="modal" >
 	                            <div class="portfolio-item-caption-content text-center text-white"></div>
-	                        <img class="img-fluid" style="width: 400px; height: 280px" src="${pro.productoImagen}" alt="" />
-	                        <h3 style="text-align: center">${pro.productoNombre}</h3>
-	                        <p style="text-align: center">${pro.productoDescripcion}</p>
+	                        <img class="img-fluid" style="width: 400px; height: 280px" src="${pro.pro_imagen}" alt="" />
+	                        <h3 style="text-align: center">${pro.pro_nombre}</h3>
+	                        <p style="text-align: center">${pro.pro_descripcion}</p>
 	                    </div>
 	                </div>  
         	</c:forEach>

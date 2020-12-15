@@ -86,19 +86,24 @@ public class IniciarSesionController extends HttpServlet {
 					url = "/private/user/inicio_user.jsp";
 				}
 			}else {
+				System.out.println("No coincide la contrasena");
 				url = "/public/IniciarSesion.html";
 			}
 			
 			empresa = empresaDAO.read(persona.getPer_id());
-			request.setAttribute("empresa", empresa);
+			int per = persona.getPer_id();
+			persona = personaDAO.read(per);
+			request.setAttribute("persona", persona);
 			
 		} catch (Exception e) {
 			System.out.println("ERROR DE INICIO DE SESION");
 			e.printStackTrace();
 			url = "/JSPs/error.jsp";
 		}
-		
+		System.out.println("url que manda= "+url);
+		System.out.println("objeto empresa="+persona.getEmpresa().getEmp_nombre());
 		//System.out.println("Nombre del persona"+persona.getPer_nombre());
+		
 		getServletContext().getRequestDispatcher(url).forward(request, response);
 		
 		//response.getWriter().append("Served at: ").append(request.getContextPath());

@@ -17,7 +17,7 @@ public class Persona implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@ GeneratedValue (strategy=GenerationType.IDENTITY)
+	@GeneratedValue (strategy=GenerationType.IDENTITY)
 	private int per_id;
 	private String per_cedula;
 	private String per_nombre;
@@ -27,11 +27,11 @@ public class Persona implements Serializable {
 	private String per_direccion;
 	private String per_email;
 	private String per_contrasena;
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name = "emp_id", unique = true, nullable = false)
 	private Ges_Empresas empresas;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "persona")
-	private Set<Ges_Pedido_Cabeceras>pedidoC = new HashSet<Ges_Pedido_Cabeceras>();
+	private Set<Ges_Pedido_Cabeceras> pedidoC = new HashSet<Ges_Pedido_Cabeceras>();
 	
 	
 
@@ -116,7 +116,7 @@ public class Persona implements Serializable {
 	}
 	
 	public Persona(int per_id, String per_cedula, String per_nombre, String per_apellido, char per_rol, String per_telefono,
-			String per_direccion, String per_email, String per_contrasena, Ges_Empresas empresa) {
+			String per_direccion, String per_email, String per_contrasena, Ges_Empresas empresas) {
 		this.per_id=per_id;
 		this.per_cedula= per_cedula;
 		this.per_nombre = per_nombre;

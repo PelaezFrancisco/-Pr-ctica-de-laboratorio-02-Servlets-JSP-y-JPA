@@ -31,11 +31,11 @@
                 </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/CompraController?id=${empresa.persona.get(0).id}">Compra de Productos</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/ListarPedidosController?id=${empresa.persona.get(0).id}">Listar Pedidos</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/BuscarPedidoController?id=${empresa.persona.get(0).id}">Buscar Pedidos</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/ModificarPedidoController?id=${empresa.persona.get(0).id}">Modificar Pedidos</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/EliminarPedidoController?id=${empresa.persona.get(0).id}">Eliminar Pedidos</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/CompraController?id=${persona.per_id}">Compra de Productos</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/ListarPedidosController?id=${persona.per_id}">Listar Pedidos</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/BuscarPedidoController?id=${persona.per_id}">Buscar Pedidos</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/ModificarPedidoController?id=${persona.per_id}">Modificar Pedidos</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/EliminarPedidoController?id=${persona.per_id}">Eliminar Pedidos</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/CerrarSesionController">Cerrar Sesion</a></li>
                 </ul>
             </div>
@@ -47,7 +47,7 @@
             <!-- Masthead Avatar Image-->
             <img class="masthead-avatar mb-5" src="../assets/img/avataaars.svg" alt="" />
             <!-- Masthead Heading-->
-            <h1 class="masthead-heading text-uppercase mb-0">Bienvenido ${empresa.persona.get(0).nombre}</h1>
+            <h1 class="masthead-heading text-uppercase mb-0">Bienvenido ${persona.per_nombre}</h1>
             <!-- Icon Divider-->
             <div class="divider-custom divider-light">
                 <div class="divider-custom-line"></div>
@@ -55,7 +55,7 @@
                 <div class="divider-custom-line"></div>
             </div>
             <!-- Masthead Subheading-->
-            <p class="masthead-subheading font-weight-light mb-0">Perfil de Usuario de ${empresa.empresaNombre}</p>
+            <p class="masthead-subheading font-weight-light mb-0">Perfil de Usuario de ${persona.empresas.emp_nombre}</p>
         </div>
     </header>
     <!-- Portfolio Section-->
@@ -65,10 +65,10 @@
             <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Datos de Usuario</h2>
             <br>
             <!-- Icon Divider-->
-            <p style="text-align: center">Nombre: ${empresa.persona.get(0).nombre} ${empresa.persona.get(0).apellido}</p>
-            <p style="text-align: center"> Cedula: ${empresa.persona.get(0).cedula}</p>
-            <p style="text-align: center">Telefono: ${empresa.persona.get(0).telefono}</p>
-            <p style="text-align: center">Email: ${empresa.persona.get(0).email}</p>
+            <p style="text-align: center">Nombre: ${persona.per_nombre} ${persona.per_apellido}</p>
+            <p style="text-align: center"> Cedula: ${persona.per_cedula}</p>
+            <p style="text-align: center">Telefono: ${persona.per_telefono}</p>
+            <p style="text-align: center">Email: ${persona.per_email}</p>
             
             <div class="divider-custom">
                 <div class="divider-custom-line"></div>
@@ -80,10 +80,10 @@
             <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Datos de la Empresa</h2>
             <!-- Icon Divider-->
             <br>
-            <p style="text-align: center">Nombre: ${empresa.empresaNombre}</p>
-            <p style="text-align: center"> Ruc: ${empresa.empresaRuc}</p>
-            <p style="text-align: center">Telefono: ${empresa.empresaTelefono}</p>
-            <p style="text-align: center">Email: ${empresa.empresaEmail}</p>
+            <p style="text-align: center">Nombre: ${persona.empresas.emp_nombre}</p>
+            <p style="text-align: center"> Ruc: ${persona.empresas.emp_ruc}</p>
+            <p style="text-align: center">Telefono: ${persona.empresas.emp_telefono}</p>
+            <p style="text-align: center">Email: ${persona.empresas.emp_email}</p>
             
             <div class="divider-custom">
                 <div class="divider-custom-line"></div>

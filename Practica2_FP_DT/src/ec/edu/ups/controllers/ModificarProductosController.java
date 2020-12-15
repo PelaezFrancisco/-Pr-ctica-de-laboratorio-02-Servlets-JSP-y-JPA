@@ -82,7 +82,9 @@ public class ModificarProductosController extends HttpServlet {
 			
 			producto.setPro_imagen("imagenes/"+request.getParameter("imagen"));
 			productoDao.update(producto);
-			url = "/index.html";
+			
+			request.setAttribute("empresa", empresa);
+			url = "/private/admin/inicio_admin.jsp";
 		} catch (Exception e) {
 			e.printStackTrace();
 			url = "/JSPs/error.jsp";

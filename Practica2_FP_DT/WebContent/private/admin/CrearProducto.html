@@ -81,7 +81,7 @@
                         <option value="5">Jugetes</option>
                     </datalist><br><br>
                     <label>Empresa a la que Pertenece</label><br><br>
-                    <input type="text" list="items1" name="emp" id="emp" />
+                    <c:set var="lista" scope="request" value="${personas}" />
                     <!-- Lista de opciones -->
                     <datalist id="items1" name="emp">
                         <option value="1">Norma</option>

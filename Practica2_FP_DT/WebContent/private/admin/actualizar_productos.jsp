@@ -15,8 +15,8 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="../../css/styles.css" rel="stylesheet" />
-    <link href="../../css/listar.css" rel="stylesheet" type="text/css" /> 
+    <link href="css/styles.css" rel="stylesheet" />
+    <link href="css/listar.css" rel="stylesheet" type="text/css" /> 
 
 </head>
 
@@ -26,7 +26,7 @@
             <!-- Masthead Avatar Image-->
             <img class="masthead-avatar mb-5" src="assets/img/portfolio/update.png" alt="" />
             <!-- Masthead Heading-->
-            <h1 class="masthead-heading text-uppercase mb-0">Cambiar Estado </h1>
+            <h1 class="masthead-heading text-uppercase mb-0">Modificar Productos</h1>
             <!-- Icon Divider-->
         </div>
     </header>
@@ -47,20 +47,86 @@
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/ListarProductoController">Listar Productos</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/private/admin/eliminar_producto.html">Eliminar Productos</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/ListaPedidosController">Listado Pedidos</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/CerrarSesionController">Cerrar Sesion</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/public/IniciarSesion.html">Cerrar Sesion</a></li>
                 </ul>
             </div>
         </div>
     </nav>
+    <c:set var="lista" scope="request" value="${productos}" />
+
+    <table>
+        <tr>
+            <td><strong>Id</strong></td>
+            <td><strong>Nombre</strong></td>
+            <td><strong>Descripcion</strong></td>
+            <td><strong>Stock</strong></td>
+            <td><strong>PrecioV</strong></td>
+            <td><strong>Categoria</strong></td>
+            <td><strong>Empresa</strong></td>
+        </tr>
+        <c:forEach var="pro" items="${lista}">
+            <tr>
+                <td>${pro.pro_id}</td>
+                <td>${pro.pro_nombre}</td>
+                <td>${pro.pro_descripcion}</td>
+                <td>${pro.pro_stock}</td>
+                <td>${pro.pro_precioV}</td>
+                <td>${pro.empresa.emp_nombre}</td>
+                <td>${pro.categoria.cat_nombre}</td>
+
+            </tr>
+        </c:forEach>
+    </table>
     <section>
         <div class="form">
             <div class="datos">
-                <form id="formulario01" method="GET" action="/Practica2_FP_DT/CambiarEstado">
-                    <input id="empId" name="empId" type="hidden" value="idPedido">
+                <form id="formulario01" method="POST" action="/Practica2_FP_DT/ModificarProductosController">
+                    <label>Codigo del Producto a Modificar</label><br><br>
+                    <input type="text" id="id" name="id" value="" placeholder="Ingrese el Codigo ..." />
                     <br><br>
-                    <label>Estado del Producto</label><br><br>
-                    <input type="text" id="estado" name="estado" value="" placeholder="Ingrese el Nuevo Estado ...." />
-                    
+                    <label>Nombre del Producto</label><br><br>
+                    <input type="text" id="nombre" name="nombre" value="" placeholder="Ingrese el Nombre ..." />
+                    <br><br>
+                    <label>Descripcion del Producto</label><br><br>
+                    <input type="text" id="descrip" name="descrip" value="" placeholder="Ingrese un abreve descripcion del producto ..." />
+                    <br><br>
+                    <label>Cantidad de Productos en Stock</label><br><br>
+                    <input type="text" id="stock" name="stock" value="" placeholder="Ingrese el Stock Producto..." />
+                    <br><br>
+                    <label>Precio Venta al Publico</label><br><br>
+                    <input type="text" id="precioV" name="precioV" value="" placeholder="Precio Venta Publico ..." />
+                    <br><br>
+                    <label>Categoria del Producto</label><br><br>
+                    <input type="text" list="items" name="categ" id="categ" />
+                    <!-- Lista de opciones -->
+                    <datalist id="items" name="categ">
+                        <option value="1">Electronicos</option>
+                        <option value="2">Limpieza</option>
+                        <option value="3">Papeleria</option>
+                        <option value="4">Hogar y Cocina</option>
+                        <option value="5">Jugetes</option>
+                    </datalist><br><br>
+                    <label>Empresa a la que Pertenece</label><br><br>
+                    <input type="text" list="items1" name="emp" id="emp" />
+                    <!-- Lista de opciones -->
+                    <datalist id="items1" name="emp">
+                        <option value="1">Norma</option>
+                        <option value="2">Nestle</option>
+                        <option value="3">Coco Cola</option>
+                        <option value="4">Colgate</option>
+                        <option value="5">L'oreal</option>
+                        <option value="6">Samsung</option>
+                        <option value="7">Apple In</option>
+                        <option value="8">TVentas</option>
+                        <option value="9">Jugueton</option>
+                    </datalist><br><br>
+                    <!--  
+                    <label>Categoria del Producto</label><br><br>
+                    <input type="text" id="categ" name="categ" value="" placeholder="Precio Venta Publico ..." />
+                    <br><br>
+                    <label>empresa del Producto</label><br><br>
+                    <input type="text" id="emp" name="emp" value="" placeholder="Precio Venta Publico ..." />
+                    <br><br>-->
                     <input type="submit" id="login" name="login" value="Actualizar" />
                     <input type="reset" value="Cancelar" />
                 </form>

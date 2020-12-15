@@ -1,6 +1,7 @@
 package ec.edu.ups.controllers;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -34,16 +35,38 @@ public class ActualizarProductoController extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = null;
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String url= null;
+		int idEmp=0;
+		ArrayList<Ges_Productos> prolist = new ArrayList<Ges_Productos>();
 		try {
-			//int codigo =Integer.valueOf(request.getParameter("id"));
-			//System.out.println("El codigo es: "+ codigo);
+        //Id de empresa
+        idEmp=Integer.parseInt(request.getParameter("idE"));
+        System.out.println("ID de la Empresa "+ idEmp);
+        //Traemos lista de productos de la empresa
+        listaProductos = productoDao.findAll();
+
+        for (int i = 0; i < listaProductos.size(); i++) {
+            if (listaProductos.get(i).getEmpresa().getEmp_id()==idEmp) {
+            	System.out.println("Lista Productos "+ i);
+                prolist.add(listaProductos.get(i));
+            }
+        }
+			request.setAttribute("productos", prolist);
+		/*String url = null;
+		int codigo=0;
+		try {
+			codigo =Integer.valueOf(request.getParameter("idE"));
+			System.out.println("El codigo es: "+ codigo);
 			
-			listaProductos = productoDao.findAll();
+			
+			listaProductos = productoDao.listaP(codigo);
 			System.out.println("Tamaño de la Lista: " + listaProductos.size());
-			request.setAttribute("productos", listaProductos);
-			url = "/JSPs/actualizar_productos.jsp";
+
+			request.setAttribute("productos", listaProductos);*/
+			
+			url = "/private/admin/actualizar_productos.jsp";
 		} catch (Exception e) {
 			e.printStackTrace();
 			url = "/JSPs/error.jsp";

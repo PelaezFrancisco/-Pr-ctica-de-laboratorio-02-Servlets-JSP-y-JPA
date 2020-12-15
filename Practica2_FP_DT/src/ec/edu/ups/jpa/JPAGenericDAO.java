@@ -11,6 +11,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 import ec.edu.ups.dao.GenericDAO;
+import ec.edu.ups.entidad.Ges_Productos;
 
 public class JPAGenericDAO<T, ID, EMAIL> implements GenericDAO<T, ID, EMAIL> {
     private Class<T> persistentClass;
@@ -120,5 +121,13 @@ public class JPAGenericDAO<T, ID, EMAIL> implements GenericDAO<T, ID, EMAIL> {
 		
 		return tq.getSingleResult();
 	}
+	
+	@Override
+	public List<Ges_Productos> listaP (int codigo){
+		String jpql1 = "Select pro FROM Ges_Productos pro WHERE pro.empresa.emp_id="+codigo;
+		List<Ges_Productos> productos = em.createQuery(jpql1).getResultList();
+		return productos;	
+	}
+
 	 
 }

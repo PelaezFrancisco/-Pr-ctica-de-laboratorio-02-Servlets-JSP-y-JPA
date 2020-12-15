@@ -30,6 +30,7 @@ public class Ges_Empresas implements Serializable {
 	private String emp_email;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "empresa" )
 	private Set<Ges_Productos> productos = new HashSet<Ges_Productos>();
+	
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "empresas")
 	private Persona persona;
 	

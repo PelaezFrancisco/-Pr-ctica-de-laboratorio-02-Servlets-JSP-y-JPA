@@ -30,6 +30,7 @@ public class Persona implements Serializable {
 	@OneToOne
 	@JoinColumn(name = "emp_id", unique = true, nullable = false)
 	private Ges_Empresas empresas;
+	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "persona")
 	private Set<Ges_Pedido_Cabeceras> pedidoC = new HashSet<Ges_Pedido_Cabeceras>();
 	

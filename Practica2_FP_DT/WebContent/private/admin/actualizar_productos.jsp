@@ -61,8 +61,9 @@
             <td><strong>Descripcion</strong></td>
             <td><strong>Stock</strong></td>
             <td><strong>PrecioV</strong></td>
-            <td><strong>Categoria</strong></td>
             <td><strong>Empresa</strong></td>
+            <td><strong>Categoria</strong></td>
+            
         </tr>
         <c:forEach var="pro" items="${lista}">
             <tr>

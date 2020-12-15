@@ -44,6 +44,21 @@ label {
     pointer-events: none;
     font-size: 22px;
 }
+SELECT{
+	border: 0;
+    outline: none;
+    border-radius: 0;
+    padding: 15px 0;
+    font-size: 2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    background: #1ab188;
+    color: #ffffff;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    -webkit-appearance: none; 
+}
 
 label .req {
     margin: 2px;
@@ -186,6 +201,6 @@ tr {
     border-bottom-style: solid;
     border-right-color: #558FA6;
     border-bottom-color: #58967c;
-    font-family: “Trebuchet MS”, Arial;
+    font-family: â€œTrebuchet MSâ€�, Arial;
     text-transform: uppercase;
 }

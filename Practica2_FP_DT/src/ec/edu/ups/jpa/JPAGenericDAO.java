@@ -5,6 +5,7 @@ import java.util.function.Predicate;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -127,6 +128,15 @@ public class JPAGenericDAO<T, ID, EMAIL> implements GenericDAO<T, ID, EMAIL> {
 		String jpql1 = "Select pro FROM Ges_Productos pro WHERE pro.empresa.emp_id="+codigo;
 		List<Ges_Productos> productos = em.createQuery(jpql1).getResultList();
 		return productos;	
+	}
+	
+	@Override
+	public T buscarP(String nombre) {
+		String jpql1="Select pro FROM Ges_Productos pro WHERE pro.pro_nombre= '"+nombre+"'";
+		Query query = em.createQuery(jpql1);
+		Ges_Productos producto = (Ges_Productos)query.getSingleResult();
+		return (T) producto;
+		
 	}
 
 	 

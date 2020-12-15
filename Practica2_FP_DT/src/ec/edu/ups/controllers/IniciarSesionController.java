@@ -89,10 +89,14 @@ public class IniciarSesionController extends HttpServlet {
 				url = "/public/IniciarSesion.html";
 			}
 			
-			empresa = empresaDAO.read(persona.getPer_id());
+			empresa = empresaDAO.read(persona.getEmpresa().getEmp_id());
+			int empresaC= persona.getEmpresa().getEmp_id();
+			System.out.println("La persona pertenece a la empresa: " +empresaC);
+			
 			int per = persona.getPer_id();
 			persona = personaDAO.read(per);
 			request.setAttribute("persona", persona);
+			request.setAttribute("empresa", empresa);
 			
 		} catch (Exception e) {
 			System.out.println("ERROR DE INICIO DE SESION");
@@ -100,7 +104,7 @@ public class IniciarSesionController extends HttpServlet {
 			url = "/JSPs/error.jsp";
 		}
 		System.out.println("url que manda= "+url);
-		System.out.println("objeto empresa="+persona.getEmpresa().getEmp_nombre());
+		//System.out.println("objeto empresa="+persona.getEmpresa().getEmp_nombre());
 		//System.out.println("Nombre del persona"+persona.getPer_nombre());
 		
 		getServletContext().getRequestDispatcher(url).forward(request, response);

@@ -21,5 +21,7 @@ public interface GenericDAO<T, ID, EMAIL> {
     public T find_email(EMAIL email);
 
 	public List<Ges_Productos> listaP(int codigo);
+
+	public T buscarP(String nombre);
 }
 

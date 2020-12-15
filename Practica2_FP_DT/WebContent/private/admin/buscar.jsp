@@ -51,29 +51,23 @@
             </div>
         </div>
     </nav>
-    <c:set var="pro" scope="request" value="${producto}" />
+    <section>
+        <div class="form">
+            <div class="datos">
+                <form id="formulario01" method="POST" action="/Practica2_FP_DT/BuscarProductoController2">
+                    <label>Nombre del Producto</label><br><br>
+                    <SELECT name="product">
+			 		<option>Seleccionar Tipo</option>
+						<c:forEach var="p" items="${producto}">
+							<option>${p.pro_nombre}</option>
+		        		</c:forEach>
+		     		</SELECT><br><br>
 
-    <table>
-        <tr>
-            <td><strong>Id</strong></td>
-            <td><strong>Nombre</strong></td>
-            <td><strong>Descripcion</strong></td>
-            <td><strong>Stock</strong></td>
-            <td><strong>PrecioV</strong></td>
-            <td><strong>categoria</strong></td>
-            <td><strong>Empresa</strong></td>
-        </tr>
-            <tr>
-                <td>${pro.pro_id}</td>
-                <td>${pro.pro_nombre}</td>
-                <td>${pro.pro_descripcion}</td>
-                <td>${pro.pro_stock}</td>
-                <td>${pro.pro_precioV}</td>
-                <td>${pro.empresa.emp_nombre}</td>
-                <td>${pro.categoria.cat_nombre}</td>
-
-            </tr>
-    </table>
+                    <input type="submit" id="login" name="login" value="Buscar" /> <input type="reset" value="Cancelar" />
+                </form>
+            </div>
+        </div>
+    </section>
 
 </body>
 </html>

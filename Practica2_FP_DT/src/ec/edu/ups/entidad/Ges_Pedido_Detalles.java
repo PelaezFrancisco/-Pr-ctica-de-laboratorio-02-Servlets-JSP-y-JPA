@@ -41,7 +41,7 @@ public class Ges_Pedido_Detalles implements Serializable {
 		result = prime * result + ((pde_subtotal == null) ? 0 : pde_subtotal.hashCode());
 		return result;
 	}
-
+	
 
 	@Override
 	public boolean equals(Object obj) {

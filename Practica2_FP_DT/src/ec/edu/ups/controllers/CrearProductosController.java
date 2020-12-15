@@ -81,6 +81,7 @@ public class CrearProductosController extends HttpServlet {
 			producto.setPro_imagen("images/"+request.getParameter("imagen"));
 			if (empresaID == idEmpresa) {
 				productoDao.create(producto);
+				request.setAttribute("empresa", empresa);
 				url = "/private/admin/inicio_admin.jsp";
 			}else {
 				url = "/JSPs/error.jsp";

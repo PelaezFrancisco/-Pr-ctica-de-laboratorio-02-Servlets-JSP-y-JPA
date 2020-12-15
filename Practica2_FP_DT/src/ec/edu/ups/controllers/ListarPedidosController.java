@@ -1,6 +1,7 @@
 package ec.edu.ups.controllers;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -49,12 +50,21 @@ public class ListarPedidosController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		String url= null;
+		int codigo=0;
+		ArrayList<Ges_Pedido_Cabeceras> listaPedC = new ArrayList<Ges_Pedido_Cabeceras>();
 		try {
-			
+			codigo= Integer.valueOf(request.getParameter("id"));
 			listaPedidoC = pedidoCabDao.findAll();
 			System.out.println("Tamano d ela lista :" +listaPedidoC.size());
-			request.setAttribute("pedidos", listaPedidoC);
-			url = "/private/admin/listar_pedidos.jsp";
+			
+			for (int i = 0; i < listaPedidoC.size(); i++) {
+				if (listaPedidoC.get(i).getPersona().getEmpresa().getEmp_id()==codigo) {
+					listaPedC.add(listaPedidoC.get(i));
+				}
+				request.setAttribute("pedidos", listaPedC);
+				url = "/private/admin/listar_pedidos.jsp";
+				
+			}
 		} catch (Exception e) {
 			  url = "/JSPs/error.jsp";
 		}

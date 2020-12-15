@@ -58,7 +58,6 @@
         <div class="container">
             <!-- Portfolio Section Heading-->
       
-            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Eliminar Productos</h2>
             <!-- Icon Divider-->
             <div class="divider-custom">
                 <div class="divider-custom-line"></div>
@@ -75,6 +74,7 @@
 			<td><strong>Stock</strong></td>
 			<td><strong>Precio</strong></td>
 			<td><strong>Imagen</strong></td>
+			<td><strong>Empresa</strong></td>
 			<td><strong>Eliminar</strong></td>
 		</tr>
 		<c:forEach var="pro" items="${lista}">
@@ -85,11 +85,11 @@
 				<td>${pro.pro_stock}</td>
 				<td>${pro.pro_precioV}</td>
 				<td>${pro.pro_imagen}</td>
+				<td>${pro.pro_imagen}</td>
 				<td> <a href="/Practica2_FP_DT/EliminarProductoController2?idPro=${pro.pro_id}">Eliminar</a> </td>
 			</tr>
 		</c:forEach>
 	</table>
-	<a href="/EjemploPersonaWebJPA/index.html">Regresar al index</a>
 	</div>
 	</section>
 </body>

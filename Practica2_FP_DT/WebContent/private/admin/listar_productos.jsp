@@ -58,23 +58,21 @@
 
     <table>
         <tr>
-            <td><strong>Id</strong></td>
-            <td><strong>Nombre</strong></td>
-            <td><strong>Descripcion</strong></td>
-            <td><strong>Stock</strong></td>
-            <td><strong>PrecioV</strong></td>
-            <td><strong>categoria</strong></td>
-            <td><strong>Empresa</strong></td>
-        </tr>
-        <c:forEach var="pro" items="${lista}">
-            <tr>
-                <td>${pro.productoId}</td>
-                <td>${pro.productoNombre}</td>
-                <td>${pro.productoDescripcion}</td>
-                <td>${pro.productoStock}</td>
-                <td>${pro.productoPrecioVenta}</td>
-                <td>${pro.cat_id}</td>
-                <td>${pro.emp_id}</td>
+            <td><strong>Codigo</strong></td>
+			<td><strong>Nombre</strong></td>
+			<td><strong>Descripcion</strong></td>
+			<td><strong>Stock</strong></td>
+			<td><strong>Precio</strong></td>
+			<td><strong>Imagen</strong></td>
+		</tr>
+		<c:forEach var="pro" items="${lista}">
+			<tr>
+				<td>${pro.pro_id}</td>				
+				<td>${pro.pro_nombre}</td>
+				<td>${pro.pro_descripcion}</td>
+				<td>${pro.pro_stock}</td>
+				<td>${pro.pro_precioV}</td>
+				<td>${pro.pro_imagen}</td>
 
             </tr>
         </c:forEach>

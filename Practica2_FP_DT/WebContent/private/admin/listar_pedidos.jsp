@@ -51,30 +51,30 @@
             </div>
         </div>
     </nav>
-    <c:set var="lista" scope="request" value="${pedidosC}" />
-
-    <table>
-        <tr>
-            <td><strong>Nro</strong></td>
-            <td><strong>Subtotal</strong></td>
-            <td><strong>Iva</strong></td>
-            <td><strong>Desc</strong></td>
-            <td><strong>Total</strong></td>
-            <td><strong>Estado</strong></td>
-            <td><strong>Cliente</strong></td>
-            <td><strong>Detalle</strong></td>
-        </tr>
-        <c:forEach var="ped" items="${lista}">
-            <tr>
-						            		
-                <td>${ped.pedidoCabeceraNumero}</td>
-                <td>${ped.pedidoCabeceraSubtotal}</td>
-                <td>${ped.pedidoCabeceraIva}</td>
-                <td>${ped.pedidoCabeceraDescuento}</td>
-                <td>${ped.pedidoCabeceraTotal}</td>
-                <td>${ped.pedidoCabeceraEstado}</td>
-                <td>${ped.pedidoCabeceraPerI}</td>
-                <td> <a href="/Practica1_DT_FP/PedidoDetalleController?idPedido=${ped.pedidoCabeceraNumero}">Detalle</a> </td>
+    <c:set var="lista" scope="request" value="${pedidos}" />
+	<table>
+		<tr>
+			<td><strong>Codigo</strong></td>
+			<td><strong>Fecha</strong></td>
+			<td><strong>Subtotal</strong></td>
+			<td><strong>Iva</strong></td>
+			<td><strong>Descuento</strong></td>
+			<td><strong>Total</strong></td>
+			<td><strong>Estado</strong></td>
+			<td><strong>Detalles</strong></td>
+			<td><strong>Aprovar/Rechazar</strong></td>
+		</tr>
+		<c:forEach var="p" items="${lista}">
+			<tr>
+				<td>${p.ped_numeroP}</td>				
+				<td>${p.ped_fecha}</td>
+				<td>${p.ped_subtotal}</td>
+				<td>${p.ped_iva}</td>
+				<td>${p.ped_descuento}</td>
+				<td>${p.ped_total}</td>
+				<td>${p.ped_estado}</td>
+                <td> <a href="/Practica2_FP_DT/PedidoDetalleController?idPedido=${p.ped_numeroP}">Detalle</a> </td>
+                <td> <a href="/private/admin/actualizar_productos.jsp?idPedido=${p.ped_numeroP}">Modificar</a> </td>
 				
             </tr>
         </c:forEach>

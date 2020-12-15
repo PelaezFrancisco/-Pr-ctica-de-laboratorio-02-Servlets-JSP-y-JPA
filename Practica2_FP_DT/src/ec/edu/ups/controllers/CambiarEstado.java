@@ -3,6 +3,7 @@ package ec.edu.ups.controllers;
 import java.io.IOException;
 import java.util.List;
 
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,37 +11,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ec.edu.ups.dao.DAOFactory;
-import ec.edu.ups.dao.EmpresaDAO;
 import ec.edu.ups.dao.PedidoCabeceraDAO;
-import ec.edu.ups.dao.PersonaDAO;
-import ec.edu.ups.entidad.Ges_Empresas;
 import ec.edu.ups.entidad.Ges_Pedido_Cabeceras;
-import ec.edu.ups.entidad.Persona;
 
 /**
- * Servlet implementation class ListarPedidosController
+ * Servlet implementation class CambiarEstado
  */
-@WebServlet("/ListarPedidosController")
-public class ListarPedidosController extends HttpServlet {
+@WebServlet("/CambiarEstado")
+public class CambiarEstado extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private PedidoCabeceraDAO pedidoCabDao;
-	private List<Ges_Pedido_Cabeceras> listaPedidoC;
-	private PersonaDAO personaDao;
-	private EmpresaDAO empresaDao;
-	private Persona persona;
-	private Ges_Empresas empresa;
-	
-	
+	private PedidoCabeceraDAO pedidoCabeceraDao ;
+	private Ges_Pedido_Cabeceras pedidoC;
+    
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ListarPedidosController() {
-        pedidoCabDao = DAOFactory.getFactory().gePedidoCabeceraDAO();
-        personaDao= DAOFactory.getFactory().getPersonaDAO();
-        empresaDao = DAOFactory.getFactory().getEmpresaDAO();
-        persona= new Persona();
-        empresa = new Ges_Empresas();
+    public CambiarEstado() {
+        pedidoCabeceraDao = DAOFactory.getFactory().gePedidoCabeceraDAO();
+        pedidoC = new Ges_Pedido_Cabeceras();
     }
 
 	/**
@@ -48,19 +37,20 @@ public class ListarPedidosController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		String url= null;
+		String url = null;
+		int idC= 0;
+		
 		try {
-			
-			listaPedidoC = pedidoCabDao.findAll();
-			System.out.println("Tamano d ela lista :" +listaPedidoC.size());
-			request.setAttribute("pedidos", listaPedidoC);
-			url = "/private/admin/listar_pedidos.jsp";
+			idC= Integer.valueOf(request.getParameter("idPedido"));
+			pedidoC= pedidoCabeceraDao.read(idC);
+		    //actualizar
+		    pedidoC.setPed_estado(request.getParameter("estado").charAt(0));
+		    pedidoCabeceraDao.update(pedidoC);
+			url = "/index.html";
 		} catch (Exception e) {
-			  url = "/JSPs/error.jsp";
+			url = "/JSPs/error.jsp";
 		}
 		getServletContext().getRequestDispatcher(url).forward(request, response);
-		
-		
 	}
 
 	/**

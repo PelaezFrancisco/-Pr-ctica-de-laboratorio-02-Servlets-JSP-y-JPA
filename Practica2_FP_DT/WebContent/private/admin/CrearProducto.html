@@ -54,7 +54,7 @@
     <section>
         <div class="form">
             <div class="datos">
-                <form id="formulario01" method="POST" action="/Practica1_DT_FP/CrearProductoController" enctype="multipart/form-data">
+                <form id="formulario01" method="Get" action="/Practica2_FP_DT/CrearProductosController" enctype="multipart/form-data">
                     <!-- <label>Codigo del Producto</label><br><br>
                     <input type="text" id="id" name="id" value="" placeholder="Ingrese el Codigo ..." />
                     <br><br> -->
@@ -81,7 +81,7 @@
                         <option value="5">Jugetes</option>
                     </datalist><br><br>
                     <label>Empresa a la que Pertenece</label><br><br>
-                    <input type="text" list="items1" name="emp" id="emp" />
+                    <c:set var="lista" scope="request" value="${personas}" />
                     <!-- Lista de opciones -->
                     <datalist id="items1" name="emp">
                         <option value="1">Norma</option>

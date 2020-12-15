@@ -47,7 +47,7 @@
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/ListarProductoController">Listar Productos</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/private/admin/eliminar_producto.html">Eliminar Productos</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/ListaPedidosController">Listado Pedidos</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/CerrarSesionController">Cerrar Sesion</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/public/IniciarSesion.html">Cerrar Sesion</a></li>
                 </ul>
             </div>
         </div>
@@ -61,18 +61,18 @@
             <td><strong>Descripcion</strong></td>
             <td><strong>Stock</strong></td>
             <td><strong>PrecioV</strong></td>
-            <td><strong>categoria</strong></td>
+            <td><strong>Categoria</strong></td>
             <td><strong>Empresa</strong></td>
         </tr>
         <c:forEach var="pro" items="${lista}">
             <tr>
-                <td>${pro.productoId}</td>
-                <td>${pro.productoNombre}</td>
-                <td>${pro.productoDescripcion}</td>
-                <td>${pro.productoStock}</td>
-                <td>${pro.productoPrecioVenta}</td>
-                <td>${pro.cat_id}</td>
-                <td>${pro.emp_id}</td>
+                <td>${pro.pro_id}</td>
+                <td>${pro.pro_nombre}</td>
+                <td>${pro.pro_descripcion}</td>
+                <td>${pro.pro_stock}</td>
+                <td>${pro.pro_precioV}</td>
+                <td>${pro.empresa.emp_nombre}</td>
+                <td>${pro.categoria.cat_nombre}</td>
 
             </tr>
         </c:forEach>
@@ -80,7 +80,7 @@
     <section>
         <div class="form">
             <div class="datos">
-                <form id="formulario01" method="POST" action="/Practica1_DT_FP/ModificarProductoController">
+                <form id="formulario01" method="POST" action="/Practica2_FP_DT/ModificarProductosController">
                     <label>Codigo del Producto a Modificar</label><br><br>
                     <input type="text" id="id" name="id" value="" placeholder="Ingrese el Codigo ..." />
                     <br><br>

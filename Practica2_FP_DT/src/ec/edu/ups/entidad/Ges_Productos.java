@@ -137,13 +137,11 @@ public class Ges_Productos implements Serializable {
 	public void setPro_imagen(String pro_imagen) {
 		this.pro_imagen = pro_imagen;
 	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((categoria == null) ? 0 : categoria.hashCode());
-		result = prime * result + ((empresa == null) ? 0 : empresa.hashCode());
+		result = prime * result + ((pedidoD == null) ? 0 : pedidoD.hashCode());
 		result = prime * result + ((pro_descripcion == null) ? 0 : pro_descripcion.hashCode());
 		result = prime * result + pro_id;
 		result = prime * result + ((pro_imagen == null) ? 0 : pro_imagen.hashCode());
@@ -154,8 +152,6 @@ public class Ges_Productos implements Serializable {
 		result = prime * result + pro_stock;
 		return result;
 	}
-
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -165,15 +161,10 @@ public class Ges_Productos implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Ges_Productos other = (Ges_Productos) obj;
-		if (categoria == null) {
-			if (other.categoria != null)
+		if (pedidoD == null) {
+			if (other.pedidoD != null)
 				return false;
-		} else if (!categoria.equals(other.categoria))
-			return false;
-		if (empresa == null) {
-			if (other.empresa != null)
-				return false;
-		} else if (!empresa.equals(other.empresa))
+		} else if (!pedidoD.equals(other.pedidoD))
 			return false;
 		if (pro_descripcion == null) {
 			if (other.pro_descripcion != null)
@@ -198,5 +189,7 @@ public class Ges_Productos implements Serializable {
 			return false;
 		return true;
 	}
+
+	
    
 }

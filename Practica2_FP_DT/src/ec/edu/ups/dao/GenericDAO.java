@@ -2,6 +2,7 @@ package ec.edu.ups.dao;
 
 import java.util.List;
 
+import ec.edu.ups.entidad.Ges_Pedido_Detalles;
 import ec.edu.ups.entidad.Ges_Productos;
 
 public interface GenericDAO<T, ID, EMAIL> {
@@ -23,5 +24,7 @@ public interface GenericDAO<T, ID, EMAIL> {
 	public List<Ges_Productos> listaP(int codigo);
 
 	public T buscarP(String nombre);
+
+	public List<Ges_Pedido_Detalles> pedidoDet(int pedidoC);
 }
 

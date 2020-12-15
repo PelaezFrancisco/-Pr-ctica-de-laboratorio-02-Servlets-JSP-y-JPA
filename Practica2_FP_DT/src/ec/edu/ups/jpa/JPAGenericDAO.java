@@ -12,6 +12,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 import ec.edu.ups.dao.GenericDAO;
+import ec.edu.ups.entidad.Ges_Pedido_Detalles;
 import ec.edu.ups.entidad.Ges_Productos;
 
 public class JPAGenericDAO<T, ID, EMAIL> implements GenericDAO<T, ID, EMAIL> {
@@ -138,6 +139,15 @@ public class JPAGenericDAO<T, ID, EMAIL> implements GenericDAO<T, ID, EMAIL> {
 		return (T) producto;
 		
 	}
-
+	
+	@Override
+	public List<Ges_Pedido_Detalles> pedidoDet(int pedidoC){
+		String jpql1 = "Select pedD FROM Ges_Pedido_Detalles pedD WHERE pedD.pedidoCab.ped_numeroP="+pedidoC;
+		List<Ges_Pedido_Detalles> pedidosDet = em.createQuery(jpql1).getResultList();
+		
+		return pedidosDet;
+		
+	}
+	
 	 
 }

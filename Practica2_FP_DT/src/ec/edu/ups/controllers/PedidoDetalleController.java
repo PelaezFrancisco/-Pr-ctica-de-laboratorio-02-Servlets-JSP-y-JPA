@@ -3,7 +3,6 @@ package ec.edu.ups.controllers;
 import java.io.IOException;
 import java.util.List;
 
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,25 +10,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ec.edu.ups.dao.DAOFactory;
-import ec.edu.ups.dao.PedidoCabeceraDAO;
-import ec.edu.ups.entidad.Ges_Pedido_Cabeceras;
+import ec.edu.ups.dao.PedidoDetalleDAO;
+import ec.edu.ups.entidad.Ges_Pedido_Detalles;
 
 /**
- * Servlet implementation class CambiarEstado
+ * Servlet implementation class PedidoDetalleController
  */
-@WebServlet("/CambiarEstado")
-public class CambiarEstado extends HttpServlet {
+@WebServlet("/PedidoDetalleController")
+public class PedidoDetalleController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private PedidoCabeceraDAO pedidoCabeceraDao ;
-	private Ges_Pedido_Cabeceras pedidoC;
-    
+	private PedidoDetalleDAO pedidoDetalleDao;
+	private Ges_Pedido_Detalles pedidoD;
+	private List<Ges_Pedido_Detalles>pedidoDetalle;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CambiarEstado() {
-        pedidoCabeceraDao = DAOFactory.getFactory().gePedidoCabeceraDAO();
-        pedidoC = new Ges_Pedido_Cabeceras();
+    public PedidoDetalleController() {
+        pedidoDetalleDao = DAOFactory.getFactory().getPedidoDetalleDAO();
+        pedidoD= new Ges_Pedido_Detalles();
     }
 
 	/**
@@ -37,29 +36,21 @@ public class CambiarEstado extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		String url = null;
-		int idC= 0;
 		
 		try {
-			idC = Integer.valueOf(request.getParameter("pedCab"));
-			
-			System.out.println("Pedi oCabecera:"+ idC);
-			pedidoC= pedidoCabeceraDao.read(idC);
-			
-			String estado = request.getParameter("estado");
-			System.out.println("El estado es "+ estado);
-			
-		    //actualizar
-		   pedidoC.setPed_estado(request.getParameter("estado").charAt(0));
-		   pedidoCabeceraDao.update(pedidoC);
-		   
-		  url = "/private/admin/listar_pedidos.jsp";
-		  
+			int idPedido = Integer.valueOf(request.getParameter("idPedido"));
+			System.out.println("El numeor de pedido es :" + idPedido);
+			pedidoDetalle=pedidoDetalleDao.pedidoDet(idPedido);
+			request.setAttribute("pedidosD", pedidoDetalle);
+			url= "/private/admin/listar_pedidosD.jsp";
 		} catch (Exception e) {
 			e.printStackTrace();
 			url = "/JSPs/error.jsp";
 		}
 		getServletContext().getRequestDispatcher(url).forward(request, response);
+		
 	}
 
 	/**

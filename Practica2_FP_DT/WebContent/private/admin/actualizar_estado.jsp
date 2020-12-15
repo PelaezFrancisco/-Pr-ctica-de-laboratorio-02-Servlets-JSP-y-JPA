@@ -15,8 +15,8 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="../../css/styles.css" rel="stylesheet" />
-    <link href="../../css/listar.css" rel="stylesheet" type="text/css" /> 
+    <link href="css/styles.css" rel="stylesheet" />
+    <link href="css/listar.css" rel="stylesheet" type="text/css" /> 
 
 </head>
 
@@ -55,8 +55,10 @@
     <section>
         <div class="form">
             <div class="datos">
-                <form id="formulario01" method="GET" action="/Practica2_FP_DT/CambiarEstado">
-                    <input id="empId" name="empId" type="hidden" value="idPedido">
+                <form id="formulario01" method="POST" action="/Practica2_FP_DT/CambiarEstado">
+                	<div style="visibility:hidden">
+                	<input id= "pedCab" name= "pedCab" type="text" value="${pedidoC.ped_numeroP}">
+                    </div>
                     <br><br>
                     <label>Estado del Producto</label><br><br>
                     <input type="text" id="estado" name="estado" value="" placeholder="Ingrese el Nuevo Estado ...." />

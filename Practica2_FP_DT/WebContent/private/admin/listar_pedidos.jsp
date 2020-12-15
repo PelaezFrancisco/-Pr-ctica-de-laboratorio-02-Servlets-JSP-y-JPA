@@ -74,7 +74,7 @@
 				<td>${p.ped_total}</td>
 				<td>${p.ped_estado}</td>
                 <td> <a href="/Practica2_FP_DT/PedidoDetalleController?idPedido=${p.ped_numeroP}">Detalle</a> </td>
-                <td> <a href="/private/admin/actualizar_productos.jsp?idPedido=${p.ped_numeroP}">Modificar</a> </td>
+                <td> <a href="/Practica2_FP_DT/EstadoController?idPedido=${p.ped_numeroP}">Modificar</a> </td>
 				
             </tr>
         </c:forEach>

@@ -65,12 +65,12 @@
         <c:forEach var="pedD" items="${lista}">
             <tr>
 						            		
-                <td>${pedD.pedidoDetalleId}</td>
-                <td>${pedD.pedidoDetalleCantidad}</td>
-                <td>${pedD.pedidoDetallePrecioUnitario}</td>
-                <td>${pedD.pedidoDetalleSubtotal}</td>
-                <td>${pedD.pro_id}</td>
-                <td>${pedD.ped_id}</td>
+                <td>${pedD.pde_id}</td>
+                <td>${pedD.pde_cantidad}</td>
+                <td>${pedD.pde_precioU}</td>
+                <td>${pedD.pde_subtotal}</td>
+                <td>${pedD.product.pro_nombre}</td>
+                <td>${pedD.pedidoCab.ped_numeroP}</td>
 				
             </tr>
         </c:forEach>
